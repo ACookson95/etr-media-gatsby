@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 
 import Accordion from '../Accordion';
 import Container from '../Container';
-import Dropdown from '../Dropdown/Dropdown';
-import FormInputField from '../FormInputField/FormInputField';
 import Icon from '../Icons/Icon';
 import Button from '../Button';
 import Config from '../../config.json';
@@ -12,12 +10,6 @@ import * as styles from './Footer.module.css';
 
 const Footer = (prop) => {
   const [email, setEmail] = useState('');
-
-  const subscribeHandler = (e) => {
-    e.preventDefault();
-    setEmail('');
-    console.log('Subscribe this email: ', email);
-  };
 
   const handleSocialClick = (platform) => {
     window.open(Config.social[platform]);
@@ -67,67 +59,34 @@ const Footer = (prop) => {
                 </div>
               );
             })}
-            <div className={styles.newsLetter}>
-              <div className={styles.newsLetterContent}>
-                <span className={styles.linkTitle}>Newsletter</span>
-                <p className={styles.promoMessage}>
-                  Get 15% off your first purchase! Plus, be the first to know
-                  about sales, new product launches and exclusive offers!
-                </p>
-                <form
-                  className={styles.newsLetterForm}
-                  onSubmit={(e) => subscribeHandler(e)}
+            <div className={styles.socialContainer}>
+              {Config.social.youtube && (
+                <div
+                  onClick={() => handleSocialClick('youtube')}
+                  role={'presentation'}
+                  className={styles.socialIconContainer}
                 >
-                  <FormInputField
-                    icon={'arrow'}
-                    id={'newsLetterInput'}
-                    value={email}
-                    placeholder={'Email'}
-                    handleChange={(_, e) => setEmail(e)}
-                  />
-                </form>
-                <div className={styles.socialContainer}>
-                  {Config.social.youtube && (
-                    <div
-                      onClick={() => handleSocialClick('youtube')}
-                      role={'presentation'}
-                      className={styles.socialIconContainer}
-                    >
-                      <Icon symbol={'youtube'}></Icon>
-                    </div>
-                  )}
-
-                  {Config.social.instagram && (
-                    <div
-                      onClick={() => handleSocialClick('instagram')}
-                      role={'presentation'}
-                      className={styles.socialIconContainer}
-                    >
-                      <Icon symbol={'instagram'}></Icon>
-                    </div>
-                  )}
-
-                  {Config.social.facebook && (
-                    <div
-                      onClick={() => handleSocialClick('facebook')}
-                      role={'presentation'}
-                      className={styles.socialIconContainer}
-                    >
-                      <Icon symbol={'facebook'}></Icon>
-                    </div>
-                  )}
-
-                  {Config.social.twitter && (
-                    <div
-                      onClick={() => handleSocialClick('twitter')}
-                      role={'presentation'}
-                      className={styles.socialIconContainer}
-                    >
-                      <Icon symbol={'twitter'}></Icon>
-                    </div>
-                  )}
+                  <Icon symbol={'youtube'}></Icon>
                 </div>
-              </div>
+              )}
+              {Config.social.instagram && (
+                <div
+                  onClick={() => handleSocialClick('instagram')}
+                  role={'presentation'}
+                  className={styles.socialIconContainer}
+                >
+                  <Icon symbol={'instagram'}></Icon>
+                </div>
+              )}
+              {Config.social.facebook && (
+                <div
+                  onClick={() => handleSocialClick('facebook')}
+                  role={'presentation'}
+                  className={styles.socialIconContainer}
+                >
+                  <Icon symbol={'facebook'}></Icon>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -135,46 +94,13 @@ const Footer = (prop) => {
       <div className={styles.contentBottomContainer}>
         <Container size={'large'} spacing={'min'}>
           <div className={styles.contentBottom}>
-            <div className={styles.settings}>
-              <Dropdown
-                label={'Country/Region'}
-                optionList={Config.currencyList}
-              />
-              <Dropdown label={'Language'} optionList={Config.languageList} />
-            </div>
             <div className={styles.copyrightContainer}>
-              <div className={styles.creditCardContainer}>
-                {Config.paymentOptions.amex && (
-                  <img
-                    className={styles.amexSize}
-                    src={'/amex.png'}
-                    alt={'amex'}
-                  ></img>
-                )}
-                {Config.paymentOptions.mastercard && (
-                  <img
-                    className={styles.masterSize}
-                    src={'/master.png'}
-                    alt={'mastercard'}
-                  ></img>
-                )}
-                {Config.paymentOptions.visa && (
-                  <img
-                    className={styles.visaSize}
-                    src={'/visa.png'}
-                    alt={'visa'}
-                  ></img>
-                )}
-              </div>
               <span>
-                {new Date().getFullYear()} (c) . Built by{' '}
-                <Button target={true} href="https://www.matterdesign.com.au/">
-                  Matter.
+                {new Date().getFullYear()} ©. All rights owned by Empower the Rebel LLC. Built by {' '}
+                <Button target={true} href="https://acookson95.github.io/portfolio/">
+                  Aaron Cookson
                 </Button>{' '}
-                Powered by{' '}
-                <Button target={true} href="https://jamm.matter.design/">
-                  JAMM.™
-                </Button>
+                using Gatsby JS.
               </span>
             </div>
           </div>

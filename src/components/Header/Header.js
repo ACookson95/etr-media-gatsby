@@ -27,13 +27,7 @@ const Header = (prop) => {
   const [search, setSearch] = useState('');
 
   const searchRef = createRef();
-  const bannerMessage = 'Free shipping worldwide';
-  const searchSuggestions = [
-    'Oversize sweaters',
-    'Lama Pajamas',
-    'Candles Cinnamon',
-  ];
-
+  
   const handleHover = (navObject) => {
     if (navObject.category) {
       setShowMenu(true);
@@ -80,9 +74,6 @@ const Header = (prop) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.headerMessageContainer}>
-        <span>{bannerMessage}</span>
-      </div>
       <Container size={'large'} spacing={'min'}>
         {/* header container */}
         <div className={styles.header}>
@@ -118,91 +109,8 @@ const Header = (prop) => {
             <Icon symbol={`${mobileMenu === true ? 'cross' : 'burger'}`}></Icon>
           </div>
           <Brand />
-          <div className={styles.actionContainers}>
-            <button
-              aria-label="Search"
-              className={`${styles.iconButton} ${styles.iconContainer}`}
-              onClick={() => {
-                setShowSearch(!showSearch);
-              }}
-            >
-              <Icon symbol={'search'}></Icon>
-            </button>
-            <Link
-              aria-label="Favorites"
-              href="/account/favorites"
-              className={`${styles.iconContainer} ${styles.hideOnMobile}`}
-            >
-              <Icon symbol={'heart'}></Icon>
-            </Link>
-            <Link
-              aria-label="Orders"
-              href={isAuth() ? '/login' : '/account/orders/'}
-              className={`${styles.iconContainer} ${styles.hideOnMobile}`}
-            >
-              <Icon symbol={'user'}></Icon>
-            </Link>
-            <button
-              aria-label="Cart"
-              className={`${styles.iconButton} ${styles.iconContainer} ${styles.bagIconContainer}`}
-              onClick={() => {
-                setShowMiniCart(true);
-                setMobileMenu(false);
-              }}
-            >
-              <Icon symbol={'bag'}></Icon>
-              <div className={styles.bagNotification}>
-                <span>1</span>
-              </div>
-            </button>
-            <div className={styles.notificationContainer}>
-              <AddNotification openCart={() => setShowMiniCart(true)} />
-            </div>
-          </div>
         </div>
 
-        {/* search container */}
-        <div
-          className={`${styles.searchContainer} ${
-            showSearch === true ? styles.show : styles.hide
-          }`}
-        >
-          <h4>What are you looking for?</h4>
-          <form className={styles.searchForm} onSubmit={(e) => handleSearch(e)}>
-            <FormInputField
-              ref={searchRef}
-              icon={'arrow'}
-              id={'searchInput'}
-              value={search}
-              placeholder={''}
-              type={'text'}
-              handleChange={(_, e) => setSearch(e)}
-            />
-          </form>
-          <div className={styles.suggestionContianer}>
-            {searchSuggestions.map((suggestion, index) => (
-              <p
-                role={'presentation'}
-                onClick={() => {
-                  setShowSearch(false);
-                  navigate(`/search?q=${suggestion}`);
-                }}
-                key={index}
-                className={styles.suggestion}
-              >
-                {suggestion}
-              </p>
-            ))}
-          </div>
-          <div
-            role={'presentation'}
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowSearch(false);
-            }}
-            className={styles.backdrop}
-          ></div>
-        </div>
       </Container>
 
       {/* menu container */}

@@ -9,21 +9,9 @@
 }
 
 .contentTop {
-    display: grid;
-    grid-template-columns: 0.25fr 0.25fr 0.5fr;
-}
-
-.newsLetter {
     display: flex;
-    justify-content: flex-end;
-}
-
-.newsLetterContent {
-    max-width: 360px;
-}
-
-.newsLetterContent p {
-    font-size: 14px;
+    justify-content: space-between;
+    grid-template-columns: 0.25fr 0.25fr 0.5fr;
 }
 
 .linkList {

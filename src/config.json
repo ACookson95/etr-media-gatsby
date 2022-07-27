@@ -12,10 +12,9 @@
     { "value": "mandarin", "label": "普通话" }
   ],
   "social": {
-    "facebook": "https://www.facebook.com/MatterDesign/",
-    "instagram": "https://www.instagram.com/p/CVwMlChIWmW",
-    "twitter": "https://twitter.com/hellomatter",
-    "youtube": "https://www.youtube.com/channel/UCEOu94Haa--QmltsSawflXg"
+    "facebook": "https://www.facebook.com/ben.barlow.967",
+    "instagram": "https://www.instagram.com/etrmediaproductions/",
+    "youtube": "https://www.youtube.com/channel/UCIFJFLVbrNsNWy8zEXAp-Xg/featured"
   },
   "paymentOptions": {
     "visa": true,
@@ -27,116 +26,41 @@
       "subTitle": "Info",
       "links": [
         {
-          "text": "About Us",
-          "link": "/about"
-        },
-        {
-          "text": "Journal",
-          "link": "/blog"
-        },
-        {
-          "text": "Privacy Policy",
-          "link": "/support#policy"
-        }
-      ]
-    },
-    {
-      "subTitle": "Support",
-      "links": [
-        {
-          "text": "FAQ",
-          "link": "/faq"
+          "text": "About",
+          "link": "/"
         },
         {
           "text": "Contact Us",
-          "link": "/support#contact"
-        },
-        {
-          "text": "Shipping & Returns",
-          "link": "/support#returns"
-        },
-        {
-          "text": "How to use this theme",
-          "link": "/how-to-use"
+          "link": "/contact"
         }
       ]
     }
   ],
   "headerLinks": [
     {
-      "menuLabel": "Shop",
-      "menuLink": "/shop",
-      "category": [
-        {
-          "categoryLabel": "woman",
-          "submenu": [
-            {
-              "menuLabel": "All clothing",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "sweatshirts & hoodies",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "jackets",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "trousers",
-              "menuLink": "/shop"
-            }
-          ]
-        },
-        {
-          "categoryLabel": "men",
-          "submenu": [
-            {
-              "menuLabel": "All clothing",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "sweatshirts & hoodies",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "jackets",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "trousers",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "pants",
-              "menuLink": "/shop"
-            }
-          ]
-        },
-        {
-          "categoryLabel": "accessories",
-          "submenu": [
-            {
-              "menuLabel": "caps & scarves",
-              "menuLink": "/shop"
-            },
-            {
-              "menuLabel": "bags",
-              "menuLink": "/shop"
-            }
-          ]
-        }
-      ]
+      "menuLabel": "Home",
+      "menuLink": "/",
+      "category": ""
     },
     {
-      "menuLabel": "journal",
-      "menuLink": "/blog",
-      "category": null
+      "menuLabel": "Services",
+      "menuLink": "",
+      "category": ""
+    },
+    {
+      "menuLabel": "Portfolio",
+      "menuLink": "",
+      "category": ""
     },
     {
       "menuLabel": "About",
-      "menuLink": "/about",
-      "category": null
+      "menuLink": "",
+      "category": ""
+    },
+    {
+      "menuLabel": "Contact",
+      "menuLink": "/contact",
+      "category": ""
     }
   ],
   "filters": [
