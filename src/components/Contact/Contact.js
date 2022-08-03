@@ -30,7 +30,7 @@ const Contact = (props) => {
       <div className={styles.section}>
         <h4>Send Us A Message</h4>
         <p>
-          Let us how we can help your business.
+          Let us know how we can help your business.
         </p>
         <p>We look forward to hearing from you.</p>
       </div>

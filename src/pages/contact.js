@@ -12,13 +12,6 @@ const ContactPage = (props) => {
   return (
     <Layout disablePaddingBottom>
       <div className={styles.root}>
-        <Banner
-          maxWidth={'650px'}
-          name={"Contact Us"}
-          bgImage={'/support.png'}
-          color={'var(--standard-white)'}
-          height={'350px'}
-        />
         <div className={styles.pageContainer}>
           <Container size={'large'} spacing={'min'}>
             <Contact />

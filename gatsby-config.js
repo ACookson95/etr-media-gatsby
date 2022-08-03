@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Sydney Ecommerce Theme`,
-    siteUrl: `https://jamm.matter.design`,
+    title: `ETR Media Productions`,
+    siteUrl: `https://www.etrmediaproductions.com/`,
   },
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Sydney Ecommerce Theme`,
-        short_name: `Sydney`,
+        name: `ETR Media Productions`,
+        short_name: `ETR`,
         start_url: `/`,
         background_color: `#000000`,
         theme_color: `#ffffff`,
