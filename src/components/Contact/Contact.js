@@ -15,14 +15,36 @@ const Contact = (props) => {
 
   const [contactForm, setContactForm] = useState(initialState);
 
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) =>
+          encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  }
+
   const handleChange = (id, e) => {
     const tempForm = { ...contactForm, [id]: e };
     setContactForm(tempForm);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setContactForm(initialState);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": event.target.name,
+        ...contactForm,
+      }),
+    })
+      .then(() => {
+        alert("Thanks contacting us! We'll be in touch soon.")
+        setContactForm(initialState);
+      }
+      )
+      .catch((error) => alert(error));
   };
 
   return (
@@ -43,7 +65,7 @@ const Contact = (props) => {
       </div>
 
       <div className={styles.contactContainer}>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form name='contact' onSubmit={(e) => handleSubmit(e)}>
           <div className={styles.contactForm}>
             <FormInputField
               id={'name'}
