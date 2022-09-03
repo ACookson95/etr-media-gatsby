@@ -6,46 +6,6 @@ import FormInputField from '../FormInputField/FormInputField';
 import * as styles from './Contact.module.css';
 
 const Contact = (props) => {
-  const initialState = {
-    name: '',
-    phone: '',
-    email: '',
-    comment: '',
-  };
-
-  const [contactForm, setContactForm] = useState(initialState);
-
-  function encode(data) {
-    return Object.keys(data)
-      .map(
-        (key) =>
-          encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  }
-
-  const handleChange = (id, e) => {
-    const tempForm = { ...contactForm, [id]: e };
-    setContactForm(tempForm);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": event.target.name,
-        ...contactForm,
-      }),
-    })
-      .then(() => {
-        alert("Thanks contacting us! We'll be in touch soon.")
-        setContactForm(initialState);
-      }
-      )
-      .catch((error) => alert(error));
-  };
 
   return (
     <div className={styles.root}>
@@ -65,28 +25,21 @@ const Contact = (props) => {
       </div>
 
       <div className={styles.contactContainer}>
-        <form name='contact' onSubmit={(e) => handleSubmit(e)}>
+        <form name='contact' netlify>
           <div className={styles.contactForm}>
             <FormInputField
               id={'name'}
-              value={contactForm.name}
-              handleChange={(id, e) => handleChange(id, e)}
               type={'text'}
               labelName={'Full Name'}
               required
             />
             <FormInputField
               id={'phone'}
-              value={contactForm.phone}
-              handleChange={(id, e) => handleChange(id, e)}
               type={'number'}
               labelName={'Phone Number'}
-              required
             />
             <FormInputField
               id={'email'}
-              value={contactForm.email}
-              handleChange={(id, e) => handleChange(id, e)}
               type={'email'}
               labelName={'Email'}
               required
@@ -94,8 +47,6 @@ const Contact = (props) => {
             <div className={styles.commentInput}>
               <FormInputField
                 id={'comment'}
-                value={contactForm.comment}
-                handleChange={(id, e) => handleChange(id, e)}
                 type={'textarea'}
                 labelName={'Comments / Questions'}
                 required
