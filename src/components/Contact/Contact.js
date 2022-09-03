@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Layout from '../layout'
 
 function encode(data) {
   return Object.keys(data)
@@ -30,7 +29,7 @@ export default function Contact() {
   }
 
   return (
-    <Layout>
+    <>
       <h1>Contact</h1>
       <form
         name="contact"
@@ -70,6 +69,6 @@ export default function Contact() {
           <button type="submit">Send</button>
         </p>
       </form>
-    </Layout>
+    </>
   )
 }
