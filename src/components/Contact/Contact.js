@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
 import Button from '../Button';
-
 import FormInputField from '../FormInputField/FormInputField';
-
 import * as styles from './Contact.module.css';
 
 const Contact = (props) => {
@@ -25,8 +22,9 @@ const Contact = (props) => {
       </div>
 
       <div className={styles.contactContainer}>
-        <form name='contact' netlify>
+        <form name='contact' method="post" data-netlify="true" data-netlify-honeypot="bot-field">
           <div className={styles.contactForm}>
+            <input type="hidden" name="form-name" value="contact" />
             <FormInputField
               id={'name'}
               type={'text'}
