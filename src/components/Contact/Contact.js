@@ -1,67 +1,75 @@
-import Button from '../Button';
-import FormInputField from '../FormInputField/FormInputField';
-import * as styles from './Contact.module.css';
+import { useState } from 'react'
+import Layout from '../layout'
 
-const Contact = (props) => {
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
+export default function Contact() {
+  const [state, setState] = useState({})
+
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...state,
+      }),
+    })
+      .then(() => alert("Thanks for contacting us. We'll get with you soon"))
+      .catch((error) => alert(error))
+  }
 
   return (
-    <div className={styles.root}>
-      <div className={styles.section}>
-        <h4>Send Us A Message</h4>
-        <p>
-          Let us know how we can help your business.
+    <Layout>
+      <h1>Contact</h1>
+      <form
+        name="contact"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden>
+          <label>
+            Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+          </label>
         </p>
-        <p>We look forward to hearing from you.</p>
-      </div>
-      <div className={styles.section}>
-        <h4>Email</h4>
         <p>
-          You can email us at email@example.com
-          or via the contact form below:
+          <label>
+            Your name:
+            <br />
+            <input type="text" name="name" onChange={handleChange} />
+          </label>
         </p>
-      </div>
-
-      <div className={styles.contactContainer}>
-        <form name='contact' method="post" data-netlify="true" data-netlify-honeypot="bot-field">
-          <div className={styles.contactForm}>
-            <input type="hidden" name="form-name" value="contact" />
-            <FormInputField
-              id={'name'}
-              type={'text'}
-              labelName={'Full Name'}
-              required
-            />
-            <FormInputField
-              id={'phone'}
-              type={'number'}
-              labelName={'Phone Number'}
-            />
-            <FormInputField
-              id={'email'}
-              type={'email'}
-              labelName={'Email'}
-              required
-            />
-            <div className={styles.commentInput}>
-              <FormInputField
-                id={'comment'}
-                type={'textarea'}
-                labelName={'Comments / Questions'}
-                required
-              />
-            </div>
-          </div>
-          <Button
-            className={styles.customButton}
-            level={'primary'}
-            type={'buttonSubmit'}
-          >
-            submit
-          </Button>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-export default Contact;
+        <p>
+          <label>
+            Your email:
+            <br />
+            <input type="email" name="email" onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message:
+            <br />
+            <textarea name="message" onChange={handleChange} />
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+    </Layout>
+  )
+}
