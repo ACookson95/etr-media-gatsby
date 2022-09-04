@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React, { useState } from 'react';
 
 import Accordion from '../Accordion';
-import {Container} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import Icon from '../Icons/Icon';
 import Button from '../Button';
 import Config from '../../config.json';
@@ -33,9 +33,9 @@ const Footer = (prop) => {
 
   return (
     <div className={styles.root}>
-      <Container size={'large'} spacing={'min'}>
-        <div className={styles.content}>
-          <div className={styles.contentTop}>
+      <Container className={styles.content}>
+        <Row className={styles.contentTop}>
+          <Col>
             {Config.footerLinks.map((linkCollection, indexLink) => {
               return (
                 <div className={styles.footerLinkContainer} key={indexLink}>
@@ -59,6 +59,8 @@ const Footer = (prop) => {
                 </div>
               );
             })}
+          </Col>
+          <Col>
             <div className={styles.socialContainer}>
               {Config.social.youtube && (
                 <div
@@ -88,24 +90,24 @@ const Footer = (prop) => {
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      </Container>
-      <div className={styles.contentBottomContainer}>
-        <Container size={'large'} spacing={'min'}>
-          <div className={styles.contentBottom}>
-            <div className={styles.copyrightContainer}>
-              <span>
-                {new Date().getFullYear()} ©. All rights owned by Empower the Rebel LLC. Built by {' '}
-                <Button target={true} href="https://acookson95.github.io/portfolio/">
-                  Aaron Cookson
-                </Button>{' '}
-                using Gatsby JS.
-              </span>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className={styles.contentBottom}>
+              <div className={styles.copyrightContainer}>
+                <span>
+                  {new Date().getFullYear()} ©. All rights owned by Empower the Rebel LLC. Built by {' '}
+                  <Button target={true} href="https://acookson95.github.io/portfolio/">
+                    Aaron Cookson
+                  </Button>{' '}
+                  using Gatsby JS.
+                </span>
+              </div>
             </div>
-          </div>
-        </Container>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
