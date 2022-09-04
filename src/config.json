@@ -26,10 +26,6 @@
       "subTitle": "Info",
       "links": [
         {
-          "text": "About",
-          "link": "/"
-        },
-        {
           "text": "Contact Us",
           "link": "/contact"
         }
