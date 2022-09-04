@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React, { useState } from 'react';
 
 import Accordion from '../Accordion';
-import Container from '../Container';
+import {Container} from 'react-bootstrap';
 import Icon from '../Icons/Icon';
 import Button from '../Button';
 import Config from '../../config.json';

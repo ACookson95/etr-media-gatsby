@@ -17,9 +17,8 @@ const IndexPage = () => {
       <Hero
         maxWidth={'500px'}
         image={'/banner1.png'}
-        title={"Website in development. More coming soon!"}
-        subtitle={"Let us help you tell the world your story"}
-        ctaText={'get a quote'}
+        title={"Showing the world your story"}
+        ctaText={'get started'}
         ctaAction={goToContact}
       />
       {/* Message Container */}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Form, Button, Stack } from 'react-bootstrap';
-import NumberFormat from 'react-number-format'
+import { Container, Form, Button, Stack, Alert, Row, Col } from 'react-bootstrap';
+import NumberFormat from 'react-number-format';
 
 function encode(data) {
   return Object.keys(data)
@@ -9,7 +9,14 @@ function encode(data) {
 }
 
 export default function Contact() {
-  const [state, setState] = useState({});
+  const initialState = {
+    name: '',
+    email: '',
+    number: '',
+    comments: '',
+  };
+  const [state, setState] = useState(initialState);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -26,13 +33,26 @@ export default function Contact() {
         ...state,
       }),
     })
-      .then(() => alert("Thanks for contacting us. We'll get with you soon"))
+      .then(() => {
+        setSubmitted(true);
+        setState(initialState);
+      })
       .catch((error) => alert(error));
   };
 
   return (
     <Container>
       <h1>Contact</h1>
+      <div>
+        Fill out the form with your contact information. 
+        Feel free to ask any questions you have about us or our process. 
+        We'll get back with you as soon as we can.
+      </div>
+      {submitted && (
+        <Alert variant="success">
+          Thanks for contacting us. We'll be in touch with you soon!
+        </Alert>
+      )}
       <Form
         name="contact"
         method="post"
@@ -54,6 +74,7 @@ export default function Contact() {
               required
               type="text"
               name="name"
+              value={state.name}
               onChange={handleChange}
             />
           </Form.Group>
@@ -63,12 +84,21 @@ export default function Contact() {
               required
               type="email"
               name="email"
+              value={state.email}
               onChange={handleChange}
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>Your Phone Number:</Form.Label>
-            <Form.Control as={NumberFormat} allowEmptyFormatting format="(###) ###-####" mask="_" name="number" onChange={handleChange} />
+            <Form.Control
+              as={NumberFormat}
+              allowEmptyFormatting
+              format="(###) ###-####"
+              mask="_"
+              name="number"
+              value={state.number}
+              onChange={handleChange}
+            />
           </Form.Group>
           <Form.Group>
             <Form.Label>Message:</Form.Label>
@@ -77,10 +107,11 @@ export default function Contact() {
               as="textarea"
               type="text"
               name="comments"
+              value={state.comments}
               onChange={handleChange}
             />
           </Form.Group>
-          <Button type="submit">Send</Button>
+          <Button type="submit">Submit</Button>
         </Stack>
       </Form>
     </Container>
