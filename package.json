@@ -1,11 +1,17 @@
 {
-  "name": "gatsby-ecommerce-theme",
+  "name": "etr-media-productions",
   "version": "1.0.0",
   "private": true,
-  "description": "An e-commerce theme designed by Matter Design for Netlify.",
-  "author": "Matter Design",
+  "description": "A media and branding conulting company.",
+  "author": "Aaron Cookson",
   "keywords": [
-    "gatsby"
+    "Media",
+    "ETR",
+    "Empower the Rebel",
+    "Productions",
+    "Branding",
+    "Media Consulting",
+    "Commercial Video"
   ],
   "scripts": {
     "develop": "gatsby develop",
